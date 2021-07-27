@@ -11,10 +11,12 @@ class Ride < ApplicationRecord
         when attraction.min_height > user.height
             "Sorry. You are not tall enough to ride the #{attraction.name}."
         else
+            # byebug
             user.tickets -= attraction.tickets
             user.nausea += attraction.nausea_rating
             user.happiness += attraction.happiness_rating
             user.save
+            "Thanks for riding the #{attraction.name}!"
         end
 
     end
